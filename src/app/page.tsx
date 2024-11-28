@@ -74,12 +74,20 @@ export default function Home() {
     setPagination(parseInt(e.target.value, 10))
   }
 
+  useEffect(() => {
+    const updated = {
+      start: 0,
+      end: paginationValue,
+    }
+    setOffset({ ...updated })
+  }, [paginationValue])
+
   const handleChangeOfIds = () => {
     const updated = {
       start: offset.start + paginationValue,
       end: offset.end + paginationValue,
     }
-    setOffset(updated)
+    setOffset({ ...updated })
   }
 
 
